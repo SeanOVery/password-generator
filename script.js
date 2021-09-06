@@ -7,7 +7,7 @@ charArray = [];
 // variable and array setup
 
 function writePassword() {
-  var password = generatePassword();
+  var password = '';
   var passwordText = document.querySelector("#password");
 
   window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
@@ -79,14 +79,15 @@ function writePassword() {
   charArrayFunc();
 
   function generatePassword() {
-
-    var randomSelection = Math.floor(Math.random()* charArray.length)
+    var charArrayJoined = charArray.join("");
     for (var i = 0; i <= passLength; i++) {
-
+      password += charArrayJoined.charAt(Math.floor(Math.random()* charArray.length));
     }
+    return password;
   } // funciton to actually generate the password
-    
+  generatePassword();
   passwordText.value = password;
+
   
 
 } // function to handle setting up and generating the password
