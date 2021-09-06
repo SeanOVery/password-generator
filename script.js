@@ -9,16 +9,32 @@ var specialChars = ["!", "#", "$", "%", "&", "@", "*"];
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  window.confirm("Please answer these questions to we can create a password for you!");
-  let passLowerCase = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
-  let passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
-  let passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
-  let passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
+  window.alert("Please answer these questions to we can create a password for you!");
+  let passLowerCase = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No").toLowerCase();
+    if ((passLowerCase !== "yes") && (passLowerCase !== "no")) {
+      console.log(passLowerCase)
+      return window.alert("Please restart and enter Yes or No in the prompt!");
+    }
+  let passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No").toLowerCase();
+    if ((passUpperCase !== "yes") && (passUpperCase !== "no")) {
+      return window.alert("Please restart and enter Yes or No in the prompt!");
+    }
+  let passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No").toLowerCase();
+    if ((passNumbers !== "yes") && (passNumbers !== "no")) {
+      return window.alert("Please restart and enter Yes or No in the prompt!");
+    }
+  let passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No").toLowerCase();
+    if ((passSpecialChars !== "yes") && (passSpecialChars !== "no")) {
+      return window.alert("Please restart and enter Yes or No in the prompt!");
+    }
   let passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
+    if (passLength < 8 || passLength > 128){
+      return window.alert("Please Restart and enter a number between 8 and 128!");
+    }
   
   function generatePassword() {
 
-    }
+  }
   
     passwordText.value = password;
   
