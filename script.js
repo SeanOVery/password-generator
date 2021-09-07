@@ -3,7 +3,7 @@ var lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
 var upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase());
 var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-charArray = [];
+var charArray = [];
 // variable and array setup
 
 function writePassword() {
