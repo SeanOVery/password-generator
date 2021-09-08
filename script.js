@@ -1,14 +1,14 @@
-var generateBtn = document.querySelector("#generate");
-var lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase());
-var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-var charArray = [];
+var generateBtn = document.querySelector("#generate"),
+    lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+    upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
+    numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"],
+    charArray = [];
 // variable and array setup
 
 function writePassword() {
-  var password = '';
-  var passwordText = document.querySelector("#password");
+  var password = '',
+      passwordText = document.querySelector("#password");
 
   window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
 
