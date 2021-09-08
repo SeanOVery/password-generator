@@ -51,7 +51,9 @@ function writePassword() {
       return charArray = numbersArray;
     } else if (passLowerCase === "no" && passUpperCase === "no" && passNumbers === "no" && passSpecialChars === "yes") {
       return charArray = specialCharsArray;
-    } else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "no" && passSpecialChars === "no") {
+    } // handles cases where user selects 1 character type
+      
+      else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "no" && passSpecialChars === "no") {
       return charArray = lowerLettersArray.concat(upperLettersArray);
     } else if (passLowerCase === "yes" && passUpperCase === "no" && passNumbers === "yes" && passSpecialChars === "no") {
       return charArray = lowerLettersArray.concat(numbersArray);
@@ -63,7 +65,9 @@ function writePassword() {
       return charArray = upperLettersArray.concat(specialCharsArray);
     } else if (passLowerCase === "no" && passUpperCase === "no" && passNumbers === "yes" && passSpecialChars === "yes") {
       return charArray = numbersArray.concat(specialCharsArray);
-    } else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "yes" && passSpecialChars === "no") {
+    } // handles cases where user selects 2 character types
+      
+      else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "yes" && passSpecialChars === "no") {
       return charArray = lowerLettersArray.concat(upperLettersArray, numbersArray);
     } else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "no" && passSpecialChars === "yes") {
       return charArray = lowerLettersArray.concat(upperLettersArray, specialCharsArray);
@@ -71,10 +75,12 @@ function writePassword() {
       return charArray = lowerLettersArray.concat(numbersArray, specialCharsArray);
     } else if (passLowerCase === "no" && passUpperCase === "yes" && passNumbers === "yes" && passSpecialChars === "yes") {
       return charArray = upperLettersArray.concat(numbersArray, specialCharsArray);
-    } else {
+    } // handles cases where user selects 3 character types
+      
+      else {
       return charArray = lowerLettersArray.concat(upperLettersArray, numbersArray, specialCharsArray);
-    }  // Creates an array to pull password from. Lines 46-53 handle cases of a single character criterion being selected. Lines 54-65 handle cases of 2 criteria being selected. Lines 66-73 handle cases of 3 criteria being selected. Final else handles the case of 4 criteria being selected.
-   
+    }  // handles final case where user selects all 4 character types.
+    // creates an array containing all characters the user chooses
   }
   charArrayFunc();
 
@@ -87,10 +93,6 @@ function writePassword() {
   } // funciton to actually generate the password
   generatePassword();
   passwordText.value = password;
-
-  
-
 } // function to handle setting up and generating the password
-
 
 generateBtn.addEventListener("click", writePassword);
