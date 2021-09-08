@@ -1,14 +1,14 @@
 let generateBtn = document.querySelector("#generate");
     
 function writePassword() {
-  let password = '',
-      passLowerCase = '',
-      passUpperCase = '',
-      passNumbers = '',
-      passSpecialChars = '',
-      passLength = '',
-      passwordText = document.querySelector("#password"),
-      charArray = [];
+  let   password = '',
+        passLowerCase = '',
+        passUpperCase = '',
+        passNumbers = '',
+        passSpecialChars = '',
+        passLength = '',
+        passwordText = document.querySelector("#password"),
+        charArray = [];
   const lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
