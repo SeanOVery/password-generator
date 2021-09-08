@@ -68,7 +68,7 @@ function writePassword() {
     } else if (passLowerCase === "yes" && passUpperCase === "yes" && passNumbers === "no" && passSpecialChars === "yes") {
       return charArray = lowerLettersArray.concat(upperLettersArray, specialCharsArray);
     } else if (passLowerCase === "yes" && passUpperCase === "no" && passNumbers === "yes" && passSpecialChars === "yes") {
-      return charArray = lowerLettersArray.concat(upperLettersArray, specialCharsArray);
+      return charArray = lowerLettersArray.concat(numbersArray, specialCharsArray);
     } else if (passLowerCase === "no" && passUpperCase === "yes" && passNumbers === "yes" && passSpecialChars === "yes") {
       return charArray = upperLettersArray.concat(numbersArray, specialCharsArray);
     } else {
