@@ -13,7 +13,6 @@ function writePassword() {
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
         specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-      
   // local variable setup for writePassword
   
   function userInput() {
@@ -62,8 +61,16 @@ function writePassword() {
     } 
     
     passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
-    if ((passLength < 8 || passLength > 128) && typeof passLength === "number"){
+    if (passLength === null) {
+      return;
+    } else {
+      passLength = Number(passLength);
+    }
+    if ((passLength < 8 || passLength > 128)){
+      passLength = '';
       return window.alert("Please Restart and enter a number between 8 and 128!");
+    } else if (Number.isNaN(passLength)) {
+      return window.alert("Please restart and enter a number between 8 and 128!");
     }
   } // function using alerts and prompts to take the user input that sets up the password criteria including error handling of improper inputs
   userInput();
