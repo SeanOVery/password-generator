@@ -2,10 +2,6 @@ let generateBtn = document.querySelector("#generate");
     
 function writePassword() {
   let   password = '',
-        passLowerCase = '',
-        passUpperCase = '',
-        passNumbers = '',
-        passSpecialChars = '',
         passLength = '',
         passwordText = document.querySelector("#password"),
         charArray = [];
@@ -13,7 +9,7 @@ function writePassword() {
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
         specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-  const inputObject = {
+        inputObject = {
         passLowerCaseKey: '',
         passUpperCaseKey: '',
         passNumbersKey: '',
@@ -24,11 +20,11 @@ function writePassword() {
   function userInput() {
     window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
     
-    passLowerCase = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
+    let passLowerCase = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
     if (passLowerCase === null) {
       return;
     } else {
-      passLowerCase.toLowerCase();
+      passLowerCase = passLowerCase.toLowerCase();
     }
     if ((passLowerCase !== "yes") && (passLowerCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -38,11 +34,11 @@ function writePassword() {
       inputObject.passLowerCaseKey = false;
     }
     
-    passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
+    let passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
     if (passUpperCase === null) {
       return;
     } else {
-      passUpperCase.toLowerCase();
+      passUpperCase = passUpperCase.toLowerCase();
     }
     if ((passUpperCase !== "yes") && (passUpperCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -52,11 +48,11 @@ function writePassword() {
       inputObject.passUpperCaseKey = false;
     }
     
-    passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
+    let passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
     if (passNumbers === null) {
       return;
     } else {
-      passNumbers.toLowerCase();
+      passNumbers = passNumbers.toLowerCase();
     }
     if ((passNumbers !== "yes") && (passNumbers !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -66,11 +62,11 @@ function writePassword() {
       inputObject.passNumbersKey = false;
     }
     
-    passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
+    let passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
     if (passSpecialChars === null) {
       return;
     } else {
-      passSpecialChars.toLowerCase();
+      passSpecialChars = passSpecialChars.toLowerCase();
     }
     if ((passLowerCase === "no") && (passUpperCase === "no") && (passNumbers === "no") &&  (passSpecialChars === "no")) {
       return window.alert("Please select at least 1 type of character to use in the password!");
