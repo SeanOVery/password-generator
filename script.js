@@ -15,8 +15,8 @@ function writePassword() {
         passUpperCaseKey: [],
         passNumbersKey: [],
         passSpecialCharsKey: []
-  }
-        // local variable and object setup for writePassword
+  } // local variable and object setup for writePassword
+  
   function inputConverterAndErrorHandler(x) {
     if (x[0] === null) {
       return valid = false;
@@ -31,7 +31,7 @@ function writePassword() {
     } else {
       x[0] = false;
     }
-  } // Error handling and conversion of user choice to false/true
+  } // function for error handling and conversion of user choice to false/true
   
   function userInput() {
     window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
@@ -81,7 +81,7 @@ function writePassword() {
     for (var i = 1; i <= passLength; i++) {
       password += charArrayJoined.charAt(Math.floor(Math.random()* charArray.length));
     }
-  } // function to actually generate the password
+  } // function to actually generate the password from the created array
   generatePassword();
   passwordText.value = password;
 } // function to handle setting up and generating the password
