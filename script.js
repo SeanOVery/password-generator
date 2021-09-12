@@ -9,13 +9,13 @@ function writePassword() {
   const lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-        specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-  const inputObject = {
+        specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"],
+        inputObject = {
         passLowerCaseKey: [],
         passUpperCaseKey: [],
         passNumbersKey: [],
         passSpecialCharsKey: []
-  } // local variable and object setup for writePassword
+        }; // local variable and object setup for writePassword
   
   function inputConverterAndErrorHandler(x) {
     if (x[0] === null) {
