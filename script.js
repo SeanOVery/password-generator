@@ -5,10 +5,6 @@ function writePassword() {
         passLength = '',
         passwordText = document.querySelector("#password"),
         valid = '',
-        passLowerCase = [],
-        passUpperCase = [],
-        passNumbers = [],
-        passSpecialChars = [],
         charArray = [];
   const lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
@@ -21,7 +17,7 @@ function writePassword() {
         passSpecialCharsKey: []
   }
         // local variable and object setup for writePassword
-  function inputErrorHandler(x, y) {
+  function inputConverterAndErrorHandler(x) {
     if (x[0] === null) {
       return valid = false;
     } else {
@@ -31,33 +27,31 @@ function writePassword() {
       valid = false
       return window.alert("Please restart and enter Yes or No in the prompt!");
     } else if (x[0] === "yes") {
-      y[0] = true;
+      x[0] = true;
     } else {
-      y[0] = false;
+      x[0] = false;
     }
-  }
+  } // Error handling and conversion of user choice to false/true
   
   function userInput() {
     window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
     
-    passLowerCase[0] = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
-    inputErrorHandler(passLowerCase, inputObject.passLowerCaseKey);
-    if (valid === false) {return}
-    
-    passUpperCase[0] = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
-    inputErrorHandler(passUpperCase, inputObject.passUpperCaseKey);
+    inputObject.passLowerCaseKey[0] = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
+    inputConverterAndErrorHandler(inputObject.passLowerCaseKey);
     if (valid === false) {return};
     
-    passNumbers[0] = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
-    inputErrorHandler(passNumbers, inputObject.passNumbersKey);
+    inputObject.passUpperCaseKey[0] = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
+    inputConverterAndErrorHandler(inputObject.passUpperCaseKey);
     if (valid === false) {return};
     
-    passSpecialChars[0] = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
-    inputErrorHandler(passSpecialChars, inputObject.passSpecialCharsKey);
+    inputObject.passNumbersKey[0] = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
+    inputConverterAndErrorHandler(inputObject.passNumbersKey);
     if (valid === false) {return};
-    if ((passLowerCase[0] === "no") && (passUpperCase[0] === "no") && (passNumbers[0] === "no") &&  (passSpecialChars[0] === "no")) {
-      return window.alert("Please select at least 1 type of character to use in the password!");
-    }
+    
+    inputObject.passSpecialCharsKey[0] = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
+    inputConverterAndErrorHandler(inputObject.passSpecialCharsKey);
+    if (valid === false) {return};
+    if ((!inputObject.passLowerCaseKey[0]) && (!inputObject.passUpperCaseKey[0]) && (!inputObject.passNumbersKey[0]) && (!inputObject.passSpecialCharsKey[0])) { return window.alert("Please select at least 1 type of character to use in the password!"); }
     
     passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
     if (passLength === null) {
