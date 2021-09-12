@@ -4,78 +4,59 @@ function writePassword() {
   let   password = '',
         passLength = '',
         passwordText = document.querySelector("#password"),
+        valid = '',
+        passLowerCase = [],
+        passUpperCase = [],
+        passNumbers = [],
+        passSpecialChars = [],
         charArray = [];
   const lowerLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
         specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-        inputObject = {
-        passLowerCaseKey: '',
-        passUpperCaseKey: '',
-        passNumbersKey: '',
-        passSpecialCharsKey: ''
+  const inputObject = {
+        passLowerCaseKey: [],
+        passUpperCaseKey: [],
+        passNumbersKey: [],
+        passSpecialCharsKey: []
   }
         // local variable and object setup for writePassword
+  function inputErrorHandler(x, y) {
+    if (x[0] === null) {
+      return valid = false;
+    } else {
+      x[0] = x[0].toLowerCase();
+    }
+    if ((x[0] !== "yes") && (x[0] !== "no")) {
+      valid = false
+      return window.alert("Please restart and enter Yes or No in the prompt!");
+    } else if (x[0] === "yes") {
+      y[0] = true;
+    } else {
+      y[0] = false;
+    }
+  }
   
   function userInput() {
     window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
     
-    let passLowerCase = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
-    if (passLowerCase === null) {
-      return;
-    } else {
-      passLowerCase = passLowerCase.toLowerCase();
-    }
-    if ((passLowerCase !== "yes") && (passLowerCase !== "no")) {
-      return window.alert("Please restart and enter Yes or No in the prompt!");
-    } else if (passLowerCase === "yes") {
-      inputObject.passLowerCaseKey = true;
-    } else {
-      inputObject.passLowerCaseKey = false;
-    }
+    passLowerCase[0] = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
+    inputErrorHandler(passLowerCase, inputObject.passLowerCaseKey);
+    if (valid === false) {return}
     
-    let passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
-    if (passUpperCase === null) {
-      return;
-    } else {
-      passUpperCase = passUpperCase.toLowerCase();
-    }
-    if ((passUpperCase !== "yes") && (passUpperCase !== "no")) {
-      return window.alert("Please restart and enter Yes or No in the prompt!");
-    } else if (passUpperCase === "yes") {
-      inputObject.passUpperCaseKey = true;
-    } else {
-      inputObject.passUpperCaseKey = false;
-    }
+    passUpperCase[0] = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
+    inputErrorHandler(passUpperCase, inputObject.passUpperCaseKey);
+    if (valid === false) {return};
     
-    let passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
-    if (passNumbers === null) {
-      return;
-    } else {
-      passNumbers = passNumbers.toLowerCase();
-    }
-    if ((passNumbers !== "yes") && (passNumbers !== "no")) {
-      return window.alert("Please restart and enter Yes or No in the prompt!");
-    } else if (passNumbers === "yes") {
-      inputObject.passNumbersKey = true;
-    } else {
-      inputObject.passNumbersKey = false;
-    }
+    passNumbers[0] = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
+    inputErrorHandler(passNumbers, inputObject.passNumbersKey);
+    if (valid === false) {return};
     
-    let passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
-    if (passSpecialChars === null) {
-      return;
-    } else {
-      passSpecialChars = passSpecialChars.toLowerCase();
-    }
-    if ((passLowerCase === "no") && (passUpperCase === "no") && (passNumbers === "no") &&  (passSpecialChars === "no")) {
+    passSpecialChars[0] = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
+    inputErrorHandler(passSpecialChars, inputObject.passSpecialCharsKey);
+    if (valid === false) {return};
+    if ((passLowerCase[0] === "no") && (passUpperCase[0] === "no") && (passNumbers[0] === "no") &&  (passSpecialChars[0] === "no")) {
       return window.alert("Please select at least 1 type of character to use in the password!");
-    } else if ((passSpecialChars !== "yes") && (passSpecialChars !== "no")) {
-      return window.alert("Please restart and enter Yes or No in the prompt!");
-    } else if (passSpecialChars === "yes") {
-      inputObject.passSpecialCharsKey = true;
-    } else {
-      inputObject.passSpecialCharsKey = false;
     }
     
     passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
@@ -94,10 +75,10 @@ function writePassword() {
   userInput();
   
   function charArrayFunc() {
-    if (inputObject.passLowerCaseKey) {charArray = charArray.concat(lowerLettersArray);} 
-    if (inputObject.passUpperCaseKey) {charArray = charArray.concat(upperLettersArray);}
-    if (inputObject.passNumbersKey) {charArray = charArray.concat(numbersArray);}
-    if (inputObject.passSpecialCharsKey) {charArray = charArray.concat(specialCharsArray);}
+    if (inputObject.passLowerCaseKey[0]) {charArray = charArray.concat(lowerLettersArray);} 
+    if (inputObject.passUpperCaseKey[0]) {charArray = charArray.concat(upperLettersArray);}
+    if (inputObject.passNumbersKey[0]) {charArray = charArray.concat(numbersArray);}
+    if (inputObject.passSpecialCharsKey[0]) {charArray = charArray.concat(specialCharsArray);}
   } // function to create an array containing all characters the user chooses
   charArrayFunc();
 
@@ -106,7 +87,6 @@ function writePassword() {
     for (var i = 1; i <= passLength; i++) {
       password += charArrayJoined.charAt(Math.floor(Math.random()* charArray.length));
     }
-    return password;
   } // function to actually generate the password
   generatePassword();
   passwordText.value = password;
