@@ -13,7 +13,17 @@ function writePassword() {
         upperLettersArray = lowerLettersArray.map(letter => letter.toUpperCase()),
         numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
         specialCharsArray = ["!", "#", "$", "%", "&", "@", "*"];
-  // local variable setup for writePassword
+  const inputObject = {
+        passLowerCaseKey: false,
+        passUpperCaseKey: false,
+        passNumbersKey: false,
+        passSpecialCharsKey: false
+  }
+  
+  
+  
+  
+        // local variable setup for writePassword
   
   function userInput() {
     window.alert("Please answer these questions so we can create a password for you! You must select at least 1 type of character to use in the password.");
@@ -26,7 +36,12 @@ function writePassword() {
     }
     if ((passLowerCase !== "yes") && (passLowerCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
+    } else if (passLowerCase === "yes") {
+      passLowerCaseKey = true;
+    } else {
+      passLowerCaseKey = false;
     }
+    
     
     passUpperCase = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
     if (passUpperCase === null) {
@@ -36,6 +51,10 @@ function writePassword() {
     }
     if ((passUpperCase !== "yes") && (passUpperCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
+    } else if (passUpperCase === "yes") {
+      passUpperCaseKey = true;
+    } else {
+      passUpperCaseKey = false;
     }
     
     passNumbers = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
@@ -46,6 +65,10 @@ function writePassword() {
     }
     if ((passNumbers !== "yes") && (passNumbers !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
+    } else if (passNumbers === "yes") {
+      passNumbersKey = true;
+    } else {
+      passNumbersKey = false;
     }
     
     passSpecialChars = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
@@ -58,7 +81,11 @@ function writePassword() {
       return window.alert("Please select at least 1 type of character to use in the password!");
     } else if ((passSpecialChars !== "yes") && (passSpecialChars !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
-    } 
+    } else if (passSpecialChars === "yes") {
+      passSpecialCharsKey = true;
+    } else {
+      passSpecialCharsKey = false;
+    }
     
     passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
     if (passLength === null) {
