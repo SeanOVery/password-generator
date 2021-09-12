@@ -79,7 +79,7 @@ function writePassword() {
   function generatePassword() {
     let charArrayJoined = charArray.join("");
     for (var i = 1; i <= passLength; i++) {
-      password += charArrayJoined.charAt(Math.floor(Math.random()* charArray.length));
+      password += charArrayJoined.charAt(Math.floor(Math.random()* charArrayJoined.length));
     }
   } // function to actually generate the password from the created array
   generatePassword();
