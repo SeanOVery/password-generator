@@ -22,7 +22,7 @@ function writePassword() {
     if (passLowerCase === null) {
       return;
     } else {
-      passLowerCase.toLowerCase();
+      passLowerCase = passLowerCase.toLowerCase();
     }
     if ((passLowerCase !== "yes") && (passLowerCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -32,7 +32,7 @@ function writePassword() {
     if (passUpperCase === null) {
       return;
     } else {
-      passUpperCase.toLowerCase();
+      passUpperCase = passUpperCase.toLowerCase();
     }
     if ((passUpperCase !== "yes") && (passUpperCase !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -42,7 +42,7 @@ function writePassword() {
     if (passNumbers === null) {
       return;
     } else {
-      passNumbers.toLowerCase();
+      passNumbers = passNumbers.toLowerCase();
     }
     if ((passNumbers !== "yes") && (passNumbers !== "no")) {
       return window.alert("Please restart and enter Yes or No in the prompt!");
@@ -52,7 +52,7 @@ function writePassword() {
     if (passSpecialChars === null) {
       return;
     } else {
-      passSpecialChars.toLowerCase();
+      passSpecialChars = passSpecialChars.toLowerCase();
     }
     if ((passLowerCase === "no") && (passUpperCase === "no") && (passNumbers === "no") &&  (passSpecialChars === "no")) {
       return window.alert("Please select at least 1 type of character to use in the password!");
