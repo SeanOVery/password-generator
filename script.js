@@ -38,20 +38,22 @@ function writePassword() {
     
     inputObject.passLowerCaseKey[0] = window.prompt("Would you like lower case letters in your password?", "Please type Yes or No");
     inputConverterAndErrorHandler(inputObject.passLowerCaseKey);
-    if (valid === false) {return};
+    if (valid === false) {return}
     
     inputObject.passUpperCaseKey[0] = window.prompt("Would you like upper case letters in your password?", "Please type Yes or No");
     inputConverterAndErrorHandler(inputObject.passUpperCaseKey);
-    if (valid === false) {return};
+    if (valid === false) {return}
     
     inputObject.passNumbersKey[0] = window.prompt("Would you like numbers in your password?", "Please type Yes or No");
     inputConverterAndErrorHandler(inputObject.passNumbersKey);
-    if (valid === false) {return};
+    if (valid === false) {return}
     
     inputObject.passSpecialCharsKey[0] = window.prompt("Would you like special characters(#, $, etc) in your password?", "Please type Yes or No");
     inputConverterAndErrorHandler(inputObject.passSpecialCharsKey);
-    if (valid === false) {return};
-    if ((!inputObject.passLowerCaseKey[0]) && (!inputObject.passUpperCaseKey[0]) && (!inputObject.passNumbersKey[0]) && (!inputObject.passSpecialCharsKey[0])) { return window.alert("Please select at least 1 type of character to use in the password!"); };
+    if (valid === false) {return}
+    if ((!inputObject.passLowerCaseKey[0]) && (!inputObject.passUpperCaseKey[0]) && (!inputObject.passNumbersKey[0]) && (!inputObject.passSpecialCharsKey[0])) { 
+      return window.alert("Please select at least 1 type of character to use in the password!"); 
+    }
     
     passLength = window.prompt("Please set the length of the password you would like between 8-128 characters", "Please type a number between 8 and 128");
     if (passLength === null) {
@@ -59,15 +61,18 @@ function writePassword() {
     } else {
       passLength = Number(passLength);
     }
-    if (passLength < 8 || passLength > 128 || Number.isNaN(passLength)){ passLength = ''; return window.alert("Please Restart and enter a number between 8 and 128!"); };
+    if (passLength < 8 || passLength > 128 || Number.isNaN(passLength)){ 
+      passLength = ''; 
+      return window.alert("Please Restart and enter a number between 8 and 128!"); 
+    }
   } // function using alerts and prompts to take the user input that sets up the password criteria including error handling of improper inputs
   userInput();
   
   function charArrayFunc() {
-    if (inputObject.passLowerCaseKey[0]) {charArray = charArray.concat(lowerLettersArray);};
-    if (inputObject.passUpperCaseKey[0]) {charArray = charArray.concat(upperLettersArray);};
-    if (inputObject.passNumbersKey[0]) {charArray = charArray.concat(numbersArray);};
-    if (inputObject.passSpecialCharsKey[0]) {charArray = charArray.concat(specialCharsArray);};
+    if (inputObject.passLowerCaseKey[0]) {charArray = charArray.concat(lowerLettersArray);}
+    if (inputObject.passUpperCaseKey[0]) {charArray = charArray.concat(upperLettersArray);}
+    if (inputObject.passNumbersKey[0]) {charArray = charArray.concat(numbersArray);}
+    if (inputObject.passSpecialCharsKey[0]) {charArray = charArray.concat(specialCharsArray);}
   } // function to create an array containing all characters the user chooses
   charArrayFunc();
 
